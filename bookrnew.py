@@ -1,15 +1,14 @@
+# Import important libraries 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from IPython.display import Markdown, display
 import streamlit as st
-
-from colorama import Fore, Back, Style
-def printmd(string):
-    display(Markdown(string))
-
+import pyaes
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+
+
 
 st.header('Book recommendation system using Neural Network')
 st.markdown("""---""")
@@ -17,23 +16,20 @@ st.markdown("""---""")
 st.header('Please Enter your book name')
 
 
-books = pd.read_csv('books.csv', encoding = "ISO-8859-1")
-# books.head()
+books = pd.read_csv("books.csv", encoding = "ISO-8859-1")
 
-ratings = pd.read_csv('pdf2dee.csv', encoding = "ISO-8859-1")
-# ratings.head()
 
-book_tags = pd.read_csv('book_tags.csv', encoding = "ISO-8859-1")
-# book_tags.head()
+ratings = pd.read_csv("pdf2dee.csv", encoding = "ISO-8859-1")
 
-tags = pd.read_csv('tags.csv')
-# tags.tail()
+book_tags = pd.read_csv("book_tags.csv", encoding = "ISO-8859-1")
+
+tags = pd.read_csv("tags.csv")
+
 
 tags_join_DF = pd.merge(book_tags, tags, left_on='tag_id', right_on='tag_id', how='inner')
-# tags_join_DF.head()
 
-to_read = pd.read_csv('to_read.csv')
-# to_read.head()
+to_read = pd.read_csv("to_read.csv")
+
 
 tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
 tfidf_matrix = tf.fit_transform(books['authors'])
@@ -43,7 +39,7 @@ books_with_tags = pd.merge(books, tags_join_DF, left_on='book_id', right_on='goo
 
 
 temp_df = books_with_tags.groupby('book_id')['tag_name'].apply(' '.join).reset_index()
-#temp_df.head()
+
 
 books = pd.merge(books, temp_df, left_on='book_id', right_on='book_id', how='inner')
 
@@ -91,8 +87,7 @@ st.table(corpus_recommendations(bookname))
 
 # Encryption and Decryption book name
 
-# import the AES library
-import pyaes
+
 # Enter plain text of any byte (stream)
 enc_bookname = str(bookname)
 
