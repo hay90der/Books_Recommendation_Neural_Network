@@ -75,10 +75,10 @@ st.table(corpus_recommendations(bookname))
 # Encryption and Decryption book name
 
 # Enter plain text of any byte (stream)
-enc_bookname = str(bookname)
+#enc_bookname = str(bookname)
 
 
-st.write("your text is " , defbook)
+st.write("your text is ")
 
 
 
