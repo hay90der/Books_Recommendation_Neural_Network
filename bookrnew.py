@@ -45,6 +45,25 @@ to_read = pd.read_csv("to_read.csv")
 
 
 tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
+tfidf_matrix = tf.fit_transform(books['authors'])
+cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+
+books_with_tags = pd.merge(books, tags_join_DF, left_on='book_id', right_on='goodreads_book_id', how='inner')
+
+
+temp_df = books_with_tags.groupby('book_id')['tag_name'].apply(' '.join).reset_index()
+
+
+books = pd.merge(books, temp_df, left_on='book_id', right_on='book_id', how='inner')
+
+books['corpus'] = (pd.Series(books[['authors', 'tag_name']]
+                .fillna('')
+                .values.tolist()
+                ).str.join(' '))
+
+tf_corpus = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
+tfidf_matrix_corpus = tf_corpus.fit_transform(books['corpus'])
+
 
 
 
