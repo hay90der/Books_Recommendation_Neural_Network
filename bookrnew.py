@@ -78,7 +78,7 @@ st.table(corpus_recommendations(bookname))
 enc_bookname = str(bookname)
 
 
-st.text("your text is " + defbook)
+st.write("your text is " , defbook)
 
 
 
