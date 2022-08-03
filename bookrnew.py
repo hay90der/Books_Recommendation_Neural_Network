@@ -44,6 +44,17 @@ to_read = pd.read_csv("to_read.csv")
 
 
 
+tf = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
+
+
+
+
+
+
+
+
+
+
 
 
 
