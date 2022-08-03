@@ -5,6 +5,7 @@ import pandas as pd
 from IPython.display import Markdown, display
 import streamlit as st
 import pyaes
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
@@ -72,7 +73,6 @@ def corpus_recommendations(title):
     df = pd.DataFrame(titles.iloc[book_indices])
     df['authors'] = books.loc[books.index.values,"authors"]
     df['similarity_score'] = [row[1] for row in sim_scores]
-    printmd("<h3> <b style='color:red;'>Your Recommendation books for book <i style='color:black;'>" + str(bookname) +"</i> is</b></h3><br>")
     
     return df 
     # return titles.iloc[book_indices]
@@ -103,9 +103,9 @@ e = aes.encrypt(enc_bookname)
 # or, use this directly
 # e = pyaes.AESModeOfOperationCTR(str.encode(key)).encrypt(i)
 
-printmd("<h3> <b style='color:red;'>The Encrypted Book name is: <i style='color:black;'> " + str(e) + "</i></b></h3><br>")
+#print("The Encrypted Book name is" + str(e) )
 
-#print("\n The Encrypted Book name is : \n", e)
+print("\n The Encrypted Book name is : \n", e)
 
 
 # decrypting cipher text
@@ -115,8 +115,8 @@ d = aes.decrypt(e)
 # or, use this directly
 #d = pyaes.AESModeOfOperationCTR(str.encode(key)).decrypt(e)
 
-printmd("<h3> <b style='color:red;'>The Decrypted Book name is:  <i style='color:black;'> " + str(d) +" </i></b></h3><br>")
+print("\n The Decrypted Book name is : \n", d)
 
 
-st.markdown("""Informatics Institute for Postgraduate Studies - IIPS """)
+st.markdown(""" Informatics Institute for Postgraduate Studies - IIPS """)
 st.markdown(""" Developed By : Hayfaa Khudir """)
