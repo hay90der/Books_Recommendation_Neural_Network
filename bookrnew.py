@@ -19,6 +19,27 @@ st.header('Please Enter your book name')
 
 
 
+books = pd.read_csv("books.csv", encoding = "ISO-8859-1")
+
+
+ratings = pd.read_csv("pdf2dee.csv", encoding = "ISO-8859-1")
+
+book_tags = pd.read_csv("book_tags.csv", encoding = "ISO-8859-1")
+
+tags = pd.read_csv("tags.csv")
+
+
+tags_join_DF = pd.merge(book_tags, tags, left_on='tag_id', right_on='tag_id', how='inner')
+
+to_read = pd.read_csv("to_read.csv")
+
+
+
+
+
+
+
+
 
 
 st.markdown(""" Informatics Institute for Postgraduate Studies - IIPS """)
