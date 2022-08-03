@@ -1,9 +1,7 @@
-streamlit==1.10.0
-pandas==1.4.2
 numpy==1.22.3
-colorama==0.4.4
+pandas==1.4.2
 ipython==8.3.0
+streamlit==1.10.0
+pyaes==1.6.1
 sklearn==0.0
 scikit-learn==1.0.2
-scipy==1.8.0
-pyaes==1.6.1
