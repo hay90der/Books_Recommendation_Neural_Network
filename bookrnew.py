@@ -72,43 +72,5 @@ st.table(corpus_recommendations(bookname))
 
 
 
-# Encryption and Decryption book name
-
-# Enter plain text of any byte (stream)
-enc_bookname = str(bookname)
-
-
-# A 256 bit (32 byte) key chosen
-key = "abhijit#4387926131r513f124597851"
-
-# CTR mode chosen for stream cipher
-aes = pyaes.AESModeOfOperationCTR(str.encode(key))
-
-# cipher text creation
-e = aes.encrypt(enc_bookname)
-# or, use this directly
-# e = pyaes.AESModeOfOperationCTR(str.encode(key)).encrypt(i)
-
-#print("The Encrypted Book name is" + str(e) )
-st.write("The Encrypted Book name is ", e)
-
-
-
-# decrypting cipher text
-# The counter mode of operation maintains state, so decryption requires a new instance be created
-aes = pyaes.AESModeOfOperationCTR(str.encode(key))
-d = aes.decrypt(e)
-# or, use this directly
-#d = pyaes.AESModeOfOperationCTR(str.encode(key)).decrypt(e)
-
-#print("\n The Decrypted Book name is ", d)
-st.write("The Decrypted Book name is ", d)
-
-
-
-
-
-
-
 st.markdown(""" Informatics Institute for Postgraduate Studies - IIPS """)
 st.markdown(""" Developed By : Hayfaa Khudir """)
