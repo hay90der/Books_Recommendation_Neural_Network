@@ -63,7 +63,6 @@ books['corpus'] = (pd.Series(books[['authors', 'tag_name']]
 
 tf_corpus = TfidfVectorizer(analyzer='word',ngram_range=(1, 2),min_df=0, stop_words='english')
 tfidf_matrix_corpus = tf_corpus.fit_transform(books['corpus'])
-cosine_sim_corpus = linear_kernel(tfidf_matrix_corpus, tfidf_matrix_corpus)
 
 
 
