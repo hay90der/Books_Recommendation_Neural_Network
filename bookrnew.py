@@ -61,10 +61,12 @@ def corpus_recommendations(title):
 # corpus_recommendations("The Hobbit")
 
 defbook = 'The Hobbit'
-bookname = st.text_input('Enter your book name',defbook)
+bookname = st.text_input('Enter your book name')
 #bookname = input()
 
 st.table(corpus_recommendations(bookname))
+
+
 
 
 
