@@ -64,9 +64,9 @@ defbook = 'The Hobbit'
 bookname = st.text_input('Enter your book name and press START Button', defbook)
 
 if st.button('START'):
-     st.table(corpus_recommendations(bookname))
- else:
-     st.write('Nothing to show')
+  st.table(corpus_recommendations(bookname))
+else:
+  st.write('Nothing to show')
 
 
 
