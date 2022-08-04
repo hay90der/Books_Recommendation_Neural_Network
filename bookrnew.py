@@ -61,10 +61,10 @@ def corpus_recommendations(title):
 # corpus_recommendations("The Hobbit")
 
 defbook = 'The Hobbit'
-bookname = st.text_input('Enter your book name and press START Button', defbook)
+bookname = st.text_input('Enter your book name and press START Button')
 
 if st.button('START'):
-  st.table(corpus_recommendations(bookname))
+  st.table(corpus_recommendations('The Hobbit'))
 else:
   st.write('Nothing to show')
 
